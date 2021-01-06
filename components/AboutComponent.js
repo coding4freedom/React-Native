@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
@@ -39,6 +40,30 @@ class About extends Component {
            );
        };
 
+        if  (this.props.partners.isLoading) {
+            return(
+                <ScrollView> 
+                    <Misson />
+                    <Card
+                        title={"Community Partners"}
+                    >
+                        <Loading />
+                    </Card>
+                </ScrollView>
+            );
+        }
+        if (this.props.partners.errMess){
+            return(
+                <ScrollView> 
+                    <Misson />
+                    <Card
+                        title={"Community Partners"}
+                    >
+                        <Text>{this.props.partners.errMess}</Text>
+                    </Card>
+                </ScrollView>
+            );
+        }
         return (
             <ScrollView> 
                 <Misson />
