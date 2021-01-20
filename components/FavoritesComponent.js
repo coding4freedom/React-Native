@@ -116,4 +116,5 @@ const styles = StyleSheet.create({
     }
 });
 
+// has to come first mapStateToProps and mapDispatchToProps second in the connect
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
